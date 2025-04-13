@@ -11,6 +11,10 @@ cv2.imshow('Blue Channel', B)
 cv2.imshow('Green Channel', G)
 cv2.imshow('Red Channel', R)
 
+# Merge channels back to BGR
+merged_BGR = cv2.merge([B, G, R])
+cv2.imshow('Merged BGR', merged_BGR)
+
 # Save the original image
 cv2.imwrite('new_img.jpg', original_img)
 
