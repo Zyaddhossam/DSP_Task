@@ -5,8 +5,12 @@ print(cv2.__version__)
 original_img = cv2.imread('test_img.jpg')
 cv2.imshow('Original', original_img)
 
-rgb_img = cv2.cvtColor(original_img, cv2.COLOR_BGR2RGB)
-cv2.imshow('BGR 2 RGB', rgb_img)
+# Split into Blue, Green, Red channels
+B, G, R = cv2.split(original_img)
+cv2.imshow('Blue Channel', B)
+cv2.imshow('Green Channel', G)
+cv2.imshow('Red Channel', R)
+
 # Save the original image
 cv2.imwrite('new_img.jpg', original_img)
 
