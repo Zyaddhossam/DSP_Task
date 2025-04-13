@@ -3,13 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 print(cv2.__version__)
 
-# Load and preprocess images
 img = cv2.imread('test_img.jpg')
-if img is None:
-    print("Error: Could not load image")
-    exit()
 
-# --- Core Operations ---
 # 1. Resizing
 resized_square = cv2.resize(img, (300, 300))  # Force 300x300
 resized_half = cv2.resize(img, None, fx=0.5, fy=0.5)  # Scale down 50%
