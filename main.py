@@ -3,24 +3,18 @@ print(cv2.__version__)
 
 # Read and display original image
 original_img = cv2.imread('test_img.jpg')
-if original_img is None:
-    print("Error: Could not load image 'test_img.jpg'")
-    exit()
 cv2.imshow('Original Image', original_img)
 
+gray_img = cv2.imread('test_img.jpg', 0)
+cv2.imshow('Grayscale Image', gray_img)
 
-gray_cvt = cv2.cvtColor(original_img, cv2.COLOR_BGR2GRAY)
-cv2.imshow('Grayscale (cvtColor)', gray_cvt)
+# Invert image using arithmetic operation
+inv_img1 = 255 - gray_img
+cv2.imshow('Inverted Image (Arithmetic)', inv_img1)
 
-# scale factors
-half_img = cv2.resize(original_img, (0, 0), fx=0.5, fy=0.5)
-cv2.imshow('Half Size (scale factors)', half_img)
-
-
-# Stretched
-stretch_img = cv2.resize(original_img, (500, 600),
-             interpolation=cv2.INTER_NEAREST)
-cv2.imshow('Stretched (NEAREST)', stretch_img)
+# Invert image using bitwise NOT
+inv_img2 = cv2.bitwise_not(gray_img)
+cv2.imshow('Inverted Image (Bitwise NOT)', inv_img2)
 
 # Save the original image
 cv2.imwrite('new_img.jpg', original_img)
